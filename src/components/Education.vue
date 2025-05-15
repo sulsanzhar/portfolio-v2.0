@@ -11,7 +11,10 @@
                     <div
                         v-for="(education, index) in educations"
                         :key="index"
-                        class="flex-1 p-4 rounded-lg bg-white/7 backdrop-blur-3xl border border-white/20 flex flex-col"
+                        class="group relative flex-1 p-4 rounded-lg flex flex-col overflow-hidden cursor-pointer bg-white/10 backdrop-blur-lg border border-white/20 shadow-lg shadow-white/10 hover:shadow-white/30 transition duration-300"
+                        @mousemove="(e) => handleMouseMove(e, index)"
+                        @mouseleave="() => resetBackground(index)"
+                        :style="{ background: cardBackgrounds[index] }"
                     >
                         <div class="flex justify-between">
                             <h2 class="text-2xl">{{ education.name }}</h2>
@@ -62,24 +65,40 @@ useMotion(child, {
   }
 })
 
+const cardBackgrounds = ref<string[]>([])
+
 const educations = [
   {
     name: 'Международный университет информационных технологий',
     specialization: `Бакалавр по специальности "Программная инженерия"`,
-    duration: "2024 – 2027",
-    uniLink: 'https://github.com/sulsanzhar/vue-sneakers',
+    duration: '2024 – 2027',
   },
   {
     name: 'Инновационный технический колледж',
     specialization: `Диплом по специальности "Компьютерная инженерия и программное обеспечение"`,
-    duration: "2020 – 2024",
-    uniLink: 'https://github.com/sulsanzhar/vue-sneakers',
+    duration: '2020 – 2024',
   },
   {
     name: 'Attractor School Almaty',
     specialization: `FullStack Developer (ReactJS + NodeJS)`,
-    duration: "2023 - 2024",
-    uniLink: 'https://github.com/sulsanzhar/vue-sneakers',
-  }
+    duration: '2023 - 2024',
+  },
 ]
+
+cardBackgrounds.value = educations.map(() => '')
+
+function handleMouseMove(event: MouseEvent, index: number) {
+  const target = event.currentTarget as HTMLElement
+  const rect = target.getBoundingClientRect()
+  const x = event.clientX - rect.left
+  const y = event.clientY - rect.top
+
+  cardBackgrounds.value[index] = `
+    radial-gradient(400px circle at ${x}px ${y}px, rgba(255,255,255,0.2), transparent)
+  `
+}
+
+function resetBackground(index: number) {
+  cardBackgrounds.value[index] = ''
+}
 </script>

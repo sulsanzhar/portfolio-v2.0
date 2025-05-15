@@ -1,7 +1,7 @@
 import { createApp } from "vue";
-import "./style.css";
 import { MotionPlugin } from "@vueuse/motion";
 import { OhVueIcon, addIcons } from "oh-vue-icons";
+import "./style.css";
 
 import {
     HiLink,
