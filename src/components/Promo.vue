@@ -36,7 +36,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="mt-40 pb-4 lg:mb-35 scroll-smooth">
+    <div class="mt-40 pb-4 lg:mb-35">
         <div class="flex flex-wrap items-center justify-around">
             <div class="w-full lg:w-1/2">
                 <div class="flex flex-col items-center lg:items-start">

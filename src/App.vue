@@ -8,19 +8,19 @@ import Contact from './components/Contact.vue'
 
 <template>
     <div
-        class="overflow-x-hidden text-neutral-200 antialiased selection:bg-cyan-300 selection:text-cyan-900 scroll-smooth"
+        class="overflow-x-hidden text-neutral-200 antialiased selection:bg-cyan-300 selection:text-cyan-900"
     >
         <div
-            class="fixed top-0 left-0 w-full h-full -z-10 bg-cover bg-center scroll-smooth"
+            class="fixed top-0 left-0 w-full h-full -z-10 bg-cover bg-center"
             style="background-image: url('https://img.freepik.com/premium-photo/dark-soft-blurred-abstract-red-blue-background-defocus-gradient-image_305419-617.jpg')"
         ></div>
         <div
-            class="scroll-smooth absolute top-0 z-[-5] h-screen w-screen bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.2),rgba(0,0,0,0))]"
+            class="absolute top-0 z-[-5] h-screen w-screen bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.2),rgba(0,0,0,0))]"
         ></div>
         <div
-            class="scroll-smooth backdrop-blur-2xl bg-white/5 border border-white/10 p-6 md:p-10 shadow-xl"
+            class="backdrop-blur-2xl bg-white/5 border border-white/10 p-6 md:p-10 shadow-xl"
         >
-            <div class="container mx-auto scroll-smooth">
+            <div class="container mx-auto">
                 <Header />
                 <Promo />
                 <Experience />

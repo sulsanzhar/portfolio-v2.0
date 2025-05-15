@@ -1,5 +1,5 @@
 <template>
-    <div id="education" class="pt-40 mt-5 scroll-smooth">
+    <div id="education" class="pt-40 mt-5">
         <h2
             class="text-center text-4xl md:text-6xl font-medium tracking-tight mb-[60px]"
         >

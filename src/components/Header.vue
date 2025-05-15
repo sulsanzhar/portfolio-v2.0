@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-    <header class="flex justify-between items-center scroll-smooth">
+    <header class="flex justify-between items-center">
         <div>
             <h1 class="text-3xl">
                 Sanzhar <span class="text-[#5865ec]">Sultanov</span>
