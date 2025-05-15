@@ -15,13 +15,21 @@
                         :key="index"
                         class="flex-1 p-4 rounded-lg bg-white/7 backdrop-blur-3xl border border-white/20 flex flex-col"
                     >
-                        <div class="flex justify-between mb-2">
+                        <div class="flex justify-between mb-4">
                             <h2 class="text-xl">{{ project.title }}</h2>
                             <div class="flex items-center gap-2.5">
-                                <a target="_blank" :href="project.siteLink">
+                                <a
+                                    target="_blank"
+                                    class="hover:text-[#007bff] ease-in-out duration-300"
+                                    :href="project.siteLink"
+                                >
                                     <v-icon class="size-8" name="hi-link" />
                                 </a>
-                                <a target="_blank" :href="project.githubLink">
+                                <a
+                                    target="_blank"
+                                    class="hover:text-[black] ease-in-out duration-300"
+                                    :href="project.githubLink"
+                                >
                                     <v-icon class="size-8" name="co-github" />
                                 </a>
                             </div>

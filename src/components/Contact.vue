@@ -19,12 +19,16 @@
                     hi, I'll try my best to get back to you!
                 </p>
                 <div class="flex items-center flex-row gap-2">
-                    <a href="https://github.com" target="_blank" rel="noopener">
-                        <img
-                            width="40px"
-                            height="40px"
-                            src="../assets/github-icon.png"
-                            alt="github-icon"
+                    <a
+                        href="https://github.com/sulsanzhar"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        <v-icon
+                            name="fa-github-square"
+                            class="text-black h-[45px] w-[45px] duration-300 ease-in-out hover:text-[white]"
+                            animation="float"
+                            hover
                         />
                     </a>
                     <a
@@ -32,11 +36,11 @@
                         target="_blank"
                         rel="noopener"
                     >
-                        <img
-                            width="50px"
-                            height="50px"
-                            src="../assets/linkedin-icon.webp"
-                            alt="linkedin-icon"
+                        <v-icon
+                            name="io-logo-linkedin"
+                            class="text-blue-600 h-[45px] w-[45px] duration-300 ease-in-out hover:text-[white]"
+                            animation="float"
+                            hover
                         />
                     </a>
                     <a
@@ -44,11 +48,11 @@
                         target="_blank"
                         rel="noopener"
                     >
-                        <img
-                            width="40px"
-                            height="40px"
-                            src="../assets/whatsapp-icon.svg"
-                            alt="whatsapp-icon"
+                        <v-icon
+                            name="io-logo-whatsapp"
+                            class="text-green-500 h-[45px] w-[45px] duration-300 ease-in-out hover:text-white cursor-pointer"
+                            animation="float"
+                            hover
                         />
                     </a>
                     <a
@@ -56,11 +60,11 @@
                         target="_blank"
                         rel="noopener"
                     >
-                        <img
-                            width="40px"
-                            height="40px"
-                            src="../assets/telegram-icon.png"
-                            alt="telegram-icon"
+                        <v-icon
+                            name="co-telegram"
+                            class="text-blue-400 h-[45px] w-[45px] duration-300 ease-in-out hover:text-[white]"
+                            animation="float"
+                            hover
                         />
                     </a>
                 </div>

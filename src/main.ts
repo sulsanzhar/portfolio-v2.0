@@ -4,16 +4,24 @@ import { MotionPlugin } from "@vueuse/motion";
 import { OhVueIcon, addIcons } from "oh-vue-icons";
 
 import {
-    RiZhihuFill,
     HiLink,
-    FaGithubAlt,
-    FaGithubSquare,
     CoGithub,
+    FaGithubSquare,
+    IoLogoLinkedin,
+    IoLogoWhatsapp,
+    CoTelegram,
 } from "oh-vue-icons/icons";
 
 import App from "./App.vue";
 
-addIcons(RiZhihuFill, HiLink, FaGithubAlt, FaGithubSquare, CoGithub);
+addIcons(
+    HiLink,
+    CoGithub,
+    FaGithubSquare,
+    IoLogoLinkedin,
+    IoLogoWhatsapp,
+    CoTelegram
+);
 
 const app = createApp(App);
 
