@@ -1,8 +1,8 @@
 <template>
-    <div class="my-12 md:my-12 pt-50 ">
+    <div class="my-12 md:my-12 pt-30 pb-20">
         <div class="text-center">
             <h1
-                class="text-center text-4xl md:text-6xl font-medium tracking-tight mb-40"
+                class="text-center text-4xl md:text-6xl font-medium tracking-tight mb-20"
             >
                 Связаться со мной
             </h1>
