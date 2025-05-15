@@ -6,6 +6,16 @@ const displayedText = ref('')
 let charIndex = 0
 let isDeleting = false
 
+const isVisible = ref(false)
+
+onMounted(() => {
+  // Включаем анимацию после монтирования (через микротик или setTimeout)
+  setTimeout(() => {
+    isVisible.value = true
+  }, 100)
+})
+
+
 function typeEffect() {
   if (!isDeleting) {
     displayedText.value = role.slice(0, charIndex + 1)
@@ -38,7 +48,10 @@ onMounted(() => {
 <template>
     <div class="mt-40 pb-4 lg:mb-35">
         <div class="flex flex-wrap items-center justify-around">
-            <div class="w-full lg:w-1/2">
+            <div
+                class="w-full lg:w-1/2 transition-left"
+                :class="{ 'visible': isVisible }"
+            >
                 <div class="flex flex-col items-center lg:items-start">
                     <h2 class="text-animation text-5xl tracking-tight">
                         I’m a <span>{{ displayedText }}</span>
@@ -61,7 +74,10 @@ onMounted(() => {
                     </a>
                 </div>
             </div>
-            <div class="promo__inner-photo">
+            <div
+                class="promo__inner-photo transition-right"
+                :class="{ 'visible': isVisible }"
+            >
                 <div class="promo__inner-photo-inner">
                     <img
                         src="https://i.postimg.cc/XYWSdLsT/photo-2023-08-28-01-21-21.jpg"
@@ -122,4 +138,23 @@ onMounted(() => {
     rotate: 360deg
   100%
     rotate: 0deg
+
+.transition-left,
+.transition-right
+  opacity: 0
+  transform: translateX(50px)
+  transition: opacity 0.8s ease, transform 0.8s ease
+
+.transition-left.visible
+  opacity: 1
+  transform: translateX(0)
+
+
+.transition-right
+  transform: translateX(-50px)
+
+
+.transition-right.visible
+  opacity: 1
+  transform: translateX(0)
 </style>

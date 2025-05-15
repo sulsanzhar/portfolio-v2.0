@@ -2,10 +2,12 @@
 import { onMounted, ref, nextTick } from 'vue'
 import VanillaTilt from 'vanilla-tilt'
 import { useMotion } from '@vueuse/motion'
+import { useIntersectionObserver } from '@vueuse/core'
 
 const container = ref(null)
 const child = ref(null)
 const projectRefs = ref<HTMLElement[]>([])
+const showProjects = ref(false)
 
 useMotion(container, {
   initial: { opacity: 0, y: 50 },
@@ -31,13 +33,29 @@ useMotion(child, {
   }
 })
 
+useIntersectionObserver(container, ([{ isIntersecting }]) => {
+  if (isIntersecting) {
+    showProjects.value = true
+    nextTick(() => {
+      projectRefs.value.forEach((el) => {
+        VanillaTilt.init(el, {
+          max: 15,
+          speed: 500,
+          glare: true,
+          'max-glare': 0.3
+        })
+      })
+    })
+  }
+})
+
 const projects = [
   {
     title: 'Sneakers Shop App',
     description: `SPA-приложение на Vue 3 для продажи кроссовок с полным клиентским функционалом. Реализована сортиров-
-    ка товаров по цене (по убыванию и возрастанию), поиск по названию с функцией debounce для предотвращения
-    избыточных запросов к API. Добавление товаров в корзину и список желаний, поддержка пагинации. Корзина пред-
-    ставлена в виде всплывающего окна справа. Реализованы отдельные страницы: история заказов и избранное.`,
+      ка товаров по цене (по убыванию и возрастанию), поиск по названию с функцией debounce для предотвращения
+      избыточных запросов к API. Добавление товаров в корзину и список желаний, поддержка пагинации. Корзина пред-
+      ставлена в виде всплывающего окна справа. Реализованы отдельные страницы: история заказов и избранное.`,
     tech: 'Технологии: Vue 3, TypeScript, Pinia, Vue Router, Axios, Tailwind CSS, Vite, Vercel',
     githubLink: 'https://github.com/sulsanzhar/vue-sneakers',
     siteLink: 'https://sneakers-shop-two-self.vercel.app/'
@@ -45,8 +63,8 @@ const projects = [
   {
     title: 'ToDo List App',
     description: `Приложение для управления задачами с синхронизацией в реальном времени и хранением состояния через Firebase.
-    Включает динамический поиск задач с фильтрацией, сортировку по статусу, полную CRUD-функциональность и
-    визуальное завершение задач через зачёркивание. Развёрнуто на Vercel.`,
+      Включает динамический поиск задач с фильтрацией, сортировку по статусу, полную CRUD-функциональность и
+      визуальное завершение задач через зачёркивание. Развёрнуто на Vercel.`,
     tech: 'Технологии: Vue 3, TypeScript, Pinia, Firebase, Axios, Vite, Vercel',
     githubLink: 'https://github.com/sulsanzhar/vue-todo',
     siteLink: 'https://sanzhik.vercel.app/'
@@ -54,9 +72,9 @@ const projects = [
   {
     title: 'Vue Pizza App',
     description: `SPA-приложение на Vue 3 для заказа пиццы. Пользователь может выбирать пиццу, указывая её размер и тип (тон-
-    кое или традиционное тесто). Реализована сортировка пицц по категориям (мясные, вегетарианские и т.д.), по цене,
-    популярности, алфавиту, а также по возрастанию и убыванию. Приложение включает управление корзиной, марш-
-    рутизацию и чистую компонентную архитектуру с акцентом на производительность и удобство использования.`,
+      кое или традиционное тесто). Реализована сортировка пицц по категориям (мясные, вегетарианские и т.д.), по цене,
+      популярности, алфавиту, а также по возрастанию и убыванию. Приложение включает управление корзиной, марш-
+      рутизацию и чистую компонентную архитектуру с акцентом на производительность и удобство использования.`,
     tech: 'Технологии: Vue 3, TypeScript, Pinia, Vue Router, Axios, PrimeVue, Vite, Vercel',
     githubLink: 'https://github.com/sulsanzhar/vue-pizza',
     siteLink: 'https://vue-pizza-app-one.vercel.app/'
@@ -65,17 +83,18 @@ const projects = [
 
 onMounted(async () => {
   await nextTick()
-  projectRefs.value.forEach((el) => {
-    VanillaTilt.init(el, {
-      max: 15,
-      speed: 500,
-      glare: true,
-      'max-glare': 0.3
-})
+  nextTick(() => {
+    projectRefs.value.forEach((el) => {
+      VanillaTilt.init(el, {
+        max: 15,
+        speed: 500,
+        glare: true,
+        'max-glare': 0.3
+      })
+    })
   })
 })
 </script>
-
 <template>
     <div id="experience" class="pt-35">
         <h2
@@ -85,14 +104,16 @@ onMounted(async () => {
         </h2>
         <div ref="container" class="space-y-10">
             <div ref="child">
-                <div
+                <transition-group
+                    name="fade-slide"
+                    tag="div"
                     class="flex flex-col md:flex-row md:justify-between md:gap-6 flex-wrap"
                 >
                     <div
-                        v-for="(project, index) in projects"
-                        :key="index"
+                        v-for="(project) in showProjects ? projects : []"
+                        :key="project.title"
                         ref="projectRefs"
-                        class="tilt-card flex-1 p-4 rounded-lg bg-white/10 backdrop-blur-3xl border border-white/20 flex flex-col hover:shadow-lg transition duration-300"
+                        class="tilt-card flex-1 p-4 rounded-lg bg-white/10 backdrop-blur-3xl border border-white/20 flex flex-col hover:shadow-lg transition-all duration-500"
                     >
                         <div class="flex justify-between mb-4">
                             <h2 class="text-xl">{{ project.title }}</h2>
@@ -116,10 +137,35 @@ onMounted(async () => {
                         <p class="mb-2 flex-grow">{{ project.description }}</p>
                         <p class="mb-0 text-sm italic">{{ project.tech }}</p>
                     </div>
-                </div>
+                </transition-group>
             </div>
         </div>
     </div>
 </template>
 
-<style scoped></style>
+<style>
+.fade-slide-enter-active,
+.fade-slide-leave-active {
+  transition: all 2s ease;
+}
+
+.fade-slide-enter-from {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.fade-slide-enter-to {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-slide-leave-from {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-slide-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
+}
+</style>

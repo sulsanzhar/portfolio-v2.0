@@ -1,17 +1,23 @@
 <template>
     <div class="my-12 md:my-12 pt-32 pb-20">
-        <div class="text-center">
+        <div class="text-center" :class="{'animate-fade-down': isVisible}">
             <h1
                 class="text-center text-4xl md:text-6xl font-medium tracking-tight mb-20"
             >
                 Связаться со мной
             </h1>
         </div>
-        <div id="contact" class="grid md:grid-cols-2 gap-4 relative">
-            <!-- <div
-            class="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary-900 to-transparent rounded-full h-80 w-80 z-0 blur-lg absolute top-3/4 -left-4 transform -translate-x-1/2 -translate-1/2"
-        ></div> -->
-            <div class="z-10">
+        <div
+            id="contact"
+            class="grid md:grid-cols-2 gap-4 relative"
+            ref="contactSection"
+        >
+            <!--
+      <div
+        class="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary-900 to-transparent rounded-full h-80 w-80 z-0 blur-lg absolute top-3/4 -left-4 transform -translate-x-1/2 -translate-1/2"
+      ></div>
+      -->
+            <div :class="{'animate-slide-left': isVisible}" class="z-10">
                 <h5 class="text-xl font-bold text-white my-2">Let's Connect</h5>
                 <p class="text-[#ADB7BE] mb-4 max-w-md">
                     I'm currently looking for new opportunities, my inbox is
@@ -70,7 +76,7 @@
                 </div>
             </div>
 
-            <div>
+            <div :class="{'animate-slide-right': isVisible}">
                 <p v-if="emailSubmitted" class="text-green-500 text-sm mt-2">
                     Email sent successfully!
                 </p>
@@ -142,14 +148,40 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 
 const emailSubmitted = ref(false)
-
 const form = ref({
   email: '',
   subject: '',
   message: ''
+})
+
+const contactSection = ref<HTMLElement | null>(null)
+
+const isVisible = ref(false)  // для управления классами анимации
+
+const handleScroll = () => {
+  if (!contactSection.value) return
+
+  const rect = contactSection.value.getBoundingClientRect()
+  const windowHeight = window.innerHeight
+
+  // Если верх блока вошел в видимую часть экрана с небольшим запасом (например, 100px)
+  if (rect.top < windowHeight - 100) {
+    isVisible.value = true
+    window.removeEventListener('scroll', handleScroll) // чтобы не дергать лишний раз
+  }
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll)
+  // Проверим сразу, если блок уже виден при загрузке
+  handleScroll()
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
 })
 
 const handleSubmit = async () => {
@@ -167,3 +199,50 @@ const handleSubmit = async () => {
   }
 }
 </script>
+
+<style scoped>
+/* Плавное появление сверху + небольшой сдвиг вниз */
+@keyframes fadeDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-down {
+  animation: fadeDown 0.7s ease forwards;
+}
+
+/* Появление слева с небольшим сдвигом */
+@keyframes slideLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.animate-slide-left {
+  animation: slideLeft 0.7s ease forwards;
+}
+
+/* Появление справа с небольшим сдвигом */
+@keyframes slideRight {
+  0% {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.animate-slide-right {
+  animation: slideRight 0.7s ease forwards;
+}
+</style>

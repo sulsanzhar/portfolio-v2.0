@@ -5,29 +5,32 @@
         >
             Образование
         </h2>
-        <div ref="container" class="space-y-10">
-            <div ref="child">
-                <div class="flex flex-col md:justify-between md:gap-6">
-                    <div
-                        v-for="(education, index) in educations"
-                        :key="index"
-                        class="group relative flex-1 p-4 rounded-lg flex flex-col overflow-hidden cursor-pointer bg-white/10 backdrop-blur-lg border border-white/20 shadow-lg shadow-white/10 hover:shadow-white/30 transition duration-300"
-                        @mousemove="(e) => handleMouseMove(e, index)"
-                        @mouseleave="() => resetBackground(index)"
-                        :style="{ background: cardBackgrounds[index] }"
-                    >
-                        <div class="flex justify-between">
-                            <h2 class="text-2xl">{{ education.name }}</h2>
-                            <div class="flex items-center gap-2.5">
-                                <p class="mb-0 text-xl italic">
-                                    {{ education.duration }}
-                                </p>
-                            </div>
+        <div class="space-y-10">
+            <div class="flex flex-col md:justify-between md:gap-6">
+                <div
+                    v-for="(education, index) in educations"
+                    :key="index"
+                    :class="[
+            'group relative flex-1 p-4 rounded-lg flex flex-col overflow-hidden cursor-pointer bg-white/10 backdrop-blur-lg border border-white/20 shadow-lg shadow-white/10 hover:shadow-white/30 transition duration-300',
+            isVisible[index] ? 'fade-left' : 'hidden-card'
+          ]"
+                    @mousemove="(e) => handleMouseMove(e, index)"
+                    @mouseleave="() => resetBackground(index)"
+                    :style="{ background: cardBackgrounds[index] }"
+                    ref="cardsRefs"
+                    :data-index="index"
+                >
+                    <div class="flex justify-between">
+                        <h2 class="text-2xl">{{ education.name }}</h2>
+                        <div class="flex items-center gap-2.5">
+                            <p class="mb-0 text-xl italic">
+                                {{ education.duration }}
+                            </p>
                         </div>
-                        <p class="text-xl mb-2 flex-grow">
-                            {{ education.specialization }}
-                        </p>
                     </div>
+                    <p class="text-xl mb-2 flex-grow">
+                        {{ education.specialization }}
+                    </p>
                 </div>
             </div>
         </div>
@@ -35,37 +38,7 @@
 </template>
 
 <script setup lang="ts">
-import { useMotion } from '@vueuse/motion'
-import { ref } from 'vue'
-
-const container = ref(null)
-const child = ref(null)
-
-useMotion(container, {
-  initial: { opacity: 0, y: 50 },
-  enter: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.8,
-      ease: 'easeOut'
-    }
-  }
-})
-
-useMotion(child, {
-  initial: { opacity: 0, y: 30 },
-  enter: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: 'easeOut'
-    }
-  }
-})
-
-const cardBackgrounds = ref<string[]>([])
+import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue'
 
 const educations = [
   {
@@ -85,7 +58,11 @@ const educations = [
   },
 ]
 
-cardBackgrounds.value = educations.map(() => '')
+const cardBackgrounds = ref<string[]>(educations.map(() => ''))
+const isVisible = ref<boolean[]>(educations.map(() => false))
+
+const cardsRefs = ref<HTMLElement[]>([])
+
 
 function handleMouseMove(event: MouseEvent, index: number) {
   const target = event.currentTarget as HTMLElement
@@ -101,4 +78,89 @@ function handleMouseMove(event: MouseEvent, index: number) {
 function resetBackground(index: number) {
   cardBackgrounds.value[index] = ''
 }
+
+let observer: IntersectionObserver | null = null
+
+onMounted(async () => {
+  // Нужно дождаться, пока DOM отрендерится, чтобы refs были в cardsRefs.value
+  await nextTick()
+
+  // Теперь cardsRefs.value - массив DOM-элементов
+  observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const index = Number(entry.target.getAttribute('data-index'))
+        if (entry.isIntersecting) {
+          isVisible.value[index] = true
+          observer?.unobserve(entry.target)
+        }
+      })
+    },
+    {
+      threshold: 0.1,
+    }
+  )
+
+  cardsRefs.value.forEach((el) => {
+    observer?.observe(el)
+  })
+})
+
+onBeforeUnmount(() => {
+  if (observer) {
+    observer.disconnect()
+  }
+})
 </script>
+
+<style scoped>
+.fade-up {
+  animation: fadeSlideUp 0.7s ease forwards;
+  opacity: 0;
+  animation-delay: var(--delay);
+}
+
+
+.fade-left {
+  animation: fadeSlideLeft 1s ease forwards;
+  opacity: 0;
+}
+
+.fade-right {
+  animation: fadeSlideRight 1s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeSlideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeSlideRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+</style>
