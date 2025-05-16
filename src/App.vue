@@ -21,7 +21,7 @@ const Contact = defineAsyncComponent(() => import('./components/Contact.vue'))
             rgba(120, 119, 198, 0.2),
             rgba(0, 0, 0, 0.6)
           ),
-          url('./src/assets/bg.avif');
+          url('/bg.avif');
         background-blend-mode: overlay;
       "
         />
