@@ -82,10 +82,8 @@ function resetBackground(index: number) {
 let observer: IntersectionObserver | null = null
 
 onMounted(async () => {
-  // Нужно дождаться, пока DOM отрендерится, чтобы refs были в cardsRefs.value
   await nextTick()
 
-  // Теперь cardsRefs.value - массив DOM-элементов
   observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {

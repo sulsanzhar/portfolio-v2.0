@@ -10,10 +10,10 @@ const projectRefs = ref<HTMLElement[]>([])
 const showProjects = ref(false)
 
 useMotion(container, {
-  initial: { opacity: 0, y: 50 },
+  initial: { opacity: 0, scale: 0.9 },
   enter: {
     opacity: 1,
-    y: 0,
+    scale: 1,
     transition: {
       duration: 0.8,
       ease: 'easeOut'
@@ -22,16 +22,18 @@ useMotion(container, {
 })
 
 useMotion(child, {
-  initial: { opacity: 0, y: 30 },
+  initial: { opacity: 0, scale: 0.95 },
   enter: {
     opacity: 1,
-    y: 0,
+    scale: 1,
     transition: {
       duration: 0.6,
       ease: 'easeOut'
     }
   }
 })
+
+
 
 useIntersectionObserver(container, ([{ isIntersecting }]) => {
   if (isIntersecting) {
@@ -146,26 +148,26 @@ onMounted(async () => {
 <style>
 .fade-slide-enter-active,
 .fade-slide-leave-active {
-  transition: all 2s ease;
+  transition: all 0.3ms ease-in-out;
 }
 
 .fade-slide-enter-from {
   opacity: 0;
-  transform: translateY(30px);
+  transform: scale(0.8);
 }
 
 .fade-slide-enter-to {
   opacity: 1;
-  transform: translateY(0);
+  transform: scale(1);
 }
 
 .fade-slide-leave-from {
   opacity: 1;
-  transform: translateY(0);
+  transform: scale(1);
 }
 
 .fade-slide-leave-to {
   opacity: 0;
-  transform: translateY(30px);
+  transform: scale(0.8);
 }
 </style>

@@ -8,16 +8,24 @@
             </h1>
         </div>
         <ul class="flex gap-10 items-center text-2xl">
-            <li class="cursor-pointer">
+            <li
+                class="cursor-pointer hover:text-[#5865ec] duration-300 ease-in-out"
+            >
                 <a href="">Обо мне</a>
             </li>
-            <li class="cursor-pointer">
+            <li
+                class="cursor-pointer hover:text-[#5865ec] duration-300 ease-in-out"
+            >
                 <a href="#experience">Проекты</a>
             </li>
-            <li class="cursor-pointer">
+            <li
+                class="cursor-pointer hover:text-[#5865ec] duration-300 ease-in-out"
+            >
                 <a href="#education">Образование</a>
             </li>
-            <li class="cursor-pointer">
+            <li
+                class="cursor-pointer hover:text-[#5865ec] duration-300 ease-in-out"
+            >
                 <a href="#contact">Контакты</a>
             </li>
         </ul>
