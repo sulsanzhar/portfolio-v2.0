@@ -1,4 +1,15 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+function scrollToSection(id: string) {
+  const el = document.getElementById(id)
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth' })
+
+    setTimeout(() => {
+      history.replaceState(null, '', window.location.pathname)
+    }, 500)
+  }
+}
+</script>
 
 <template>
     <header class="flex justify-between items-center">
@@ -10,23 +21,21 @@
         <ul class="flex gap-10 items-center text-2xl">
             <li
                 class="cursor-pointer hover:text-[#5865ec] duration-300 ease-in-out"
+                @click="scrollToSection('experience')"
             >
-                <a href="">Обо мне</a>
+                Проекты
             </li>
             <li
                 class="cursor-pointer hover:text-[#5865ec] duration-300 ease-in-out"
+                @click="scrollToSection('education')"
             >
-                <a href="#experience">Проекты</a>
+                Образование
             </li>
             <li
                 class="cursor-pointer hover:text-[#5865ec] duration-300 ease-in-out"
+                @click="scrollToSection('contact')"
             >
-                <a href="#education">Образование</a>
-            </li>
-            <li
-                class="cursor-pointer hover:text-[#5865ec] duration-300 ease-in-out"
-            >
-                <a href="#contact">Контакты</a>
+                Контакты
             </li>
         </ul>
     </header>
