@@ -109,7 +109,7 @@ onMounted(async () => {
                 <transition-group
                     name="fade-slide"
                     tag="div"
-                    class="flex flex-col md:flex-row md:justify-between md:gap-6 flex-wrap"
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
                 >
                     <div
                         v-for="(project) in showProjects ? projects : []"

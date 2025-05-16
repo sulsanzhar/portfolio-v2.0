@@ -6,7 +6,7 @@
             Образование
         </h2>
         <div class="space-y-10">
-            <div class="flex flex-col md:justify-between md:gap-6">
+            <div class="flex flex-col md:justify-between gap-6">
                 <div
                     v-for="(education, index) in educations"
                     :key="index"
@@ -22,7 +22,7 @@
                 >
                     <div class="flex justify-between">
                         <h2 class="text-2xl">{{ education.name }}</h2>
-                        <div class="flex items-center gap-2.5">
+                        <div class="hidden md:block items-center gap-2.5">
                             <p class="mb-0 text-xl italic">
                                 {{ education.duration }}
                             </p>
@@ -31,6 +31,11 @@
                     <p class="text-xl mb-2 flex-grow">
                         {{ education.specialization }}
                     </p>
+                    <div class="md:hidden flex items-center gap-2.5">
+                        <p class="mb-0 text-xl italic">
+                            {{ education.duration }}
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>

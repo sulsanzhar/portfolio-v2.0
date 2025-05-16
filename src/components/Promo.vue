@@ -47,17 +47,23 @@ onMounted(() => {
 
 <template>
     <div class="mt-40 pb-4 lg:mb-35">
-        <div class="flex flex-wrap items-center justify-around">
+        <div
+            class="flex flex-wrap-reverse gap-2 md:gap-10 items-center justify-around"
+        >
             <div
                 class="w-full lg:w-1/2 transition-left"
                 :class="{ 'visible': isVisible }"
             >
                 <div class="flex flex-col items-center lg:items-start">
-                    <h2 class="text-animation text-5xl tracking-tight">
+                    <h2
+                        class="text-animation text-2xl md:text-4xl lg:text-5xl tracking-tight"
+                    >
                         I’m a <span>{{ displayedText }}</span>
                     </h2>
 
-                    <p class="my-2 max-w-xl py-6 text-xl tracking-tighter">
+                    <p
+                        class="my-2 text-center md:text-left max-w-xl py-6 text-xl tracking-tighter"
+                    >
                         Frontend-разработчик с крепкой теоретической базой и
                         практическим опытом создания современных веб-приложений
                         на Vue.js. Успешно защитил дипломный проект «Vue Pizza»
@@ -95,14 +101,22 @@ onMounted(() => {
   max-width: 50%
   border-radius: 50%
   .promo__inner-photo-inner
-    width: 400px
-    height: 400px
+    width: 150%
     border-radius: 50%
     position: relative
+    left: calc(50% - (150% / 2))
     display: flex
     justify-content: center
     align-items: center
     z-index: 10
+    @media (min-width: 768px)
+      width: 100%
+      height: 100%
+      left: 0
+
+    @media (min-width: 1024px)
+      width: 400px
+      height: 400px
     img
       position: relative
       z-index: 5
