@@ -1,5 +1,5 @@
 <template>
-    <div class="my-12 md:my-12 pt-32 pb-20">
+    <div class="pt-40 pb-30">
         <div class="text-center" :class="{'animate-fade-down': isVisible}">
             <h1
                 class="text-center text-4xl md:text-6xl font-medium tracking-tight mb-20"

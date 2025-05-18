@@ -1,7 +1,7 @@
 <template>
-    <div id="education" class="pt-40 mt-5">
+    <div id="education" class="pt-56">
         <h2
-            class="text-center text-4xl md:text-6xl font-medium tracking-tight mb-[60px]"
+            class="text-center text-4xl md:text-6xl font-medium tracking-tight mb-20"
         >
             Образование
         </h2>

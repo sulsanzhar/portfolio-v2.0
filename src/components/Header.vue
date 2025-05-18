@@ -52,6 +52,12 @@ onBeforeUnmount(() => {
             </li>
             <li
                 class="cursor-pointer hover:text-[#5865ec] duration-300 ease-in-out"
+                @click="scrollToSection('skills')"
+            >
+                Навыки
+            </li>
+            <li
+                class="cursor-pointer hover:text-[#5865ec] duration-300 ease-in-out"
                 @click="scrollToSection('education')"
             >
                 Образование

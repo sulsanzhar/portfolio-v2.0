@@ -6,6 +6,7 @@ const Promo = defineAsyncComponent(() => import('./components/Promo.vue'))
 const Experience = defineAsyncComponent(() => import('./components/Experience.vue'))
 const Education = defineAsyncComponent(() => import('./components/Education.vue'))
 const Contact = defineAsyncComponent(() => import('./components/Contact.vue'))
+const Skills = defineAsyncComponent(() => import('./components/Skills.vue'));
 </script>
 
 <template>
@@ -32,6 +33,7 @@ const Contact = defineAsyncComponent(() => import('./components/Contact.vue'))
                 <Header />
                 <Promo />
                 <Experience />
+                <Skills />
                 <Education />
                 <Contact />
             </div>

@@ -46,7 +46,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="mt-40 pb-4 lg:mb-35">
+    <div class="mt-40 pb-4">
         <div
             class="flex flex-wrap-reverse gap-2 md:gap-10 items-center justify-around"
         >
