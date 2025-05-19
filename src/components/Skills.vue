@@ -1,3 +1,23 @@
+<script setup>
+import { onMounted } from 'vue'
+
+onMounted(() => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  document.querySelectorAll(".fade-in-up").forEach((el) => observer.observe(el));
+});
+</script>
+
 <template>
     <div id="skills" class="pt-40">
         <h2
@@ -6,9 +26,11 @@
             Навыки
         </h2>
         <div class="text-white">
-            <ul class="grid grid-cols-5 gap-6">
+            <ul
+                class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6"
+            >
                 <li
-                    class="p-3 rounded-2xl border border-gray-400 flex flex-col items-center gap-1 h-fit transition-all duration-300 ease-in-out hover:scale-[1.05] hover:shadow-xl hover:border-transparent hover:bg-[rgb(91,74,77)] hover:text-white"
+                    class="fade-in-up card-glow p-3 rounded-2xl border border-gray-400 flex flex-col items-center gap-1 h-fit transition-all duration-300 ease-in-out hover:scale-[1.05] hover:shadow-xl hover:border-transparent hover:bg-[rgb(91,74,77)] hover:text-white"
                 >
                     <div class="p-3 rounded-[10px]">
                         <img
@@ -21,7 +43,7 @@
                     <p class="">HTML</p>
                 </li>
                 <li
-                    class="p-3 rounded-2xl border border-gray-400 flex flex-col items-center gap-1 h-fit transition-all duration-300 ease-in-out hover:scale-[1.05] hover:shadow-xl hover:border-transparent hover:bg-[rgb(91,74,77)] hover:text-white"
+                    class="fade-in-up card-glow p-3 rounded-2xl border border-gray-400 flex flex-col items-center gap-1 h-fit transition-all duration-300 ease-in-out hover:scale-[1.05] hover:shadow-xl hover:border-transparent hover:bg-[rgb(91,74,77)] hover:text-white"
                 >
                     <div class="p-3 rounded-[10px]">
                         <img
@@ -34,7 +56,7 @@
                     <p class="">CSS</p>
                 </li>
                 <li
-                    class="p-3 rounded-2xl border border-gray-400 flex flex-col items-center gap-1 h-fit transition-all duration-300 ease-in-out hover:scale-[1.05] hover:shadow-xl hover:border-transparent hover:bg-[rgb(91,74,77)] hover:text-white"
+                    class="fade-in-up card-glow p-3 rounded-2xl border border-gray-400 flex flex-col items-center gap-1 h-fit transition-all duration-300 ease-in-out hover:scale-[1.05] hover:shadow-xl hover:border-transparent hover:bg-[rgb(91,74,77)] hover:text-white"
                 >
                     <div class="p-3 rounded-[10px]">
                         <img
@@ -47,7 +69,7 @@
                     <p class="">JavaScript</p>
                 </li>
                 <li
-                    class="p-3 rounded-2xl border border-gray-400 flex flex-col items-center gap-1 h-fit transition-all duration-300 ease-in-out hover:scale-[1.05] hover:shadow-xl hover:border-transparent hover:bg-[rgb(91,74,77)] hover:text-white"
+                    class="fade-in-up card-glow p-3 rounded-2xl border border-gray-400 flex flex-col items-center gap-1 h-fit transition-all duration-300 ease-in-out hover:scale-[1.05] hover:shadow-xl hover:border-transparent hover:bg-[rgb(91,74,77)] hover:text-white"
                 >
                     <div class="p-3 rounded-[10px]">
                         <img
@@ -60,7 +82,7 @@
                     <p class="">TypeScript</p>
                 </li>
                 <li
-                    class="p-3 rounded-2xl border border-gray-400 flex flex-col items-center gap-1 h-fit transition-all duration-300 ease-in-out hover:scale-[1.05] hover:shadow-xl hover:border-transparent hover:bg-[rgb(91,74,77)] hover:text-white"
+                    class="fade-in-up card-glow p-3 rounded-2xl border border-gray-400 flex flex-col items-center gap-1 h-fit transition-all duration-300 ease-in-out hover:scale-[1.05] hover:shadow-xl hover:border-transparent hover:bg-[rgb(91,74,77)] hover:text-white"
                 >
                     <div class="p-3 rounded-[10px]">
                         <img
@@ -74,7 +96,7 @@
                 </li>
 
                 <li
-                    class="p-3 rounded-2xl border border-gray-400 flex flex-col items-center gap-1 h-fit transition-all duration-300 ease-in-out hover:scale-[1.05] hover:shadow-xl hover:border-transparent hover:bg-[rgb(91,74,77)] hover:text-white"
+                    class="fade-in-up card-glow p-3 rounded-2xl border border-gray-400 flex flex-col items-center gap-1 h-fit transition-all duration-300 ease-in-out hover:scale-[1.05] hover:shadow-xl hover:border-transparent hover:bg-[rgb(91,74,77)] hover:text-white"
                 >
                     <div class="p-3 rounded-[10px]">
                         <img
@@ -88,7 +110,7 @@
                 </li>
 
                 <li
-                    class="p-3 rounded-2xl border border-gray-400 flex flex-col items-center gap-1 h-fit transition-all duration-300 ease-in-out hover:scale-[1.05] hover:shadow-xl hover:border-transparent hover:bg-[rgb(91,74,77)] hover:text-white"
+                    class="fade-in-up card-glow p-3 rounded-2xl border border-gray-400 flex flex-col items-center gap-1 h-fit transition-all duration-300 ease-in-out hover:scale-[1.05] hover:shadow-xl hover:border-transparent hover:bg-[rgb(91,74,77)] hover:text-white"
                 >
                     <div class="p-3 rounded-[10px]">
                         <img
@@ -102,7 +124,7 @@
                 </li>
 
                 <li
-                    class="p-3 rounded-2xl border border-gray-400 flex flex-col items-center gap-1 h-fit transition-all duration-300 ease-in-out hover:scale-[1.05] hover:shadow-xl hover:border-transparent hover:bg-[rgb(91,74,77)] hover:text-white"
+                    class="fade-in-up card-glow p-3 rounded-2xl border border-gray-400 flex flex-col items-center gap-1 h-fit transition-all duration-300 ease-in-out hover:scale-[1.05] hover:shadow-xl hover:border-transparent hover:bg-[rgb(91,74,77)] hover:text-white"
                 >
                     <div class="p-3 rounded-[10px]">
                         <img
@@ -116,7 +138,7 @@
                 </li>
 
                 <li
-                    class="p-3 rounded-2xl border border-gray-400 flex flex-col items-center gap-1 h-fit transition-all duration-300 ease-in-out hover:scale-[1.05] hover:shadow-xl hover:border-transparent hover:bg-[rgb(91,74,77)] hover:text-white"
+                    class="fade-in-up card-glow p-3 rounded-2xl border border-gray-400 flex flex-col items-center gap-1 h-fit transition-all duration-300 ease-in-out hover:scale-[1.05] hover:shadow-xl hover:border-transparent hover:bg-[rgb(91,74,77)] hover:text-white"
                 >
                     <div class="p-3 rounded-[10px]">
                         <img
@@ -130,7 +152,7 @@
                 </li>
 
                 <li
-                    class="p-3 rounded-2xl border border-gray-400 flex flex-col items-center gap-1 h-fit transition-all duration-300 ease-in-out hover:scale-[1.05] hover:shadow-xl hover:border-transparent hover:bg-[rgb(91,74,77)] hover:text-white"
+                    class="fade-in-up card-glow p-3 rounded-2xl border border-gray-400 flex flex-col items-center gap-1 h-fit transition-all duration-300 ease-in-out hover:scale-[1.05] hover:shadow-xl hover:border-transparent hover:bg-[rgb(91,74,77)] hover:text-white"
                 >
                     <div class="p-3 rounded-[10px]">
                         <img
@@ -146,3 +168,17 @@
         </div>
     </div>
 </template>
+
+<style lang="css">
+
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
