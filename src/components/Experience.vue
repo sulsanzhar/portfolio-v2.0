@@ -58,7 +58,7 @@ const projects = [
       ка товаров по цене (по убыванию и возрастанию), поиск по названию с функцией debounce для предотвращения
       избыточных запросов к API. Добавление товаров в корзину и список желаний, поддержка пагинации. Корзина пред-
       ставлена в виде всплывающего окна справа. Реализованы отдельные страницы: история заказов и избранное.`,
-    tech: 'Технологии: Vue 3, TypeScript, Pinia, Vue Router, Axios, Tailwind CSS, Vite, Vercel',
+    tech: ["Vue 3", "TypeScript", "Pinia", "Vue Router", "Axios", "Tailwind CSS", "Vite", " Vercel"],
     githubLink: 'https://github.com/sulsanzhar/vue-sneakers',
     siteLink: 'https://sneakers-shop-two-self.vercel.app/'
   },
@@ -67,7 +67,7 @@ const projects = [
     description: `Приложение для управления задачами с синхронизацией в реальном времени и хранением состояния через Firebase.
       Включает динамический поиск задач с фильтрацией, сортировку по статусу, полную CRUD-функциональность и
       визуальное завершение задач через зачёркивание. Развёрнуто на Vercel.`,
-    tech: 'Технологии: Vue 3, TypeScript, Pinia, Firebase, Axios, Vite, Vercel',
+    tech: ["Vue 3", "TypeScript", "Pinia", "Firebase", "Axios", "Vite", "Vercel"],
     githubLink: 'https://github.com/sulsanzhar/vue-todo',
     siteLink: 'https://sanzhik.vercel.app/'
   },
@@ -77,7 +77,7 @@ const projects = [
       кое или традиционное тесто). Реализована сортировка пицц по категориям (мясные, вегетарианские и т.д.), по цене,
       популярности, алфавиту, а также по возрастанию и убыванию. Приложение включает управление корзиной, марш-
       рутизацию и чистую компонентную архитектуру с акцентом на производительность и удобство использования.`,
-    tech: 'Технологии: Vue 3, TypeScript, Pinia, Vue Router, Axios, PrimeVue, Vite, Vercel',
+    tech: ["Vue 3", "TypeScript", "Pinia", "Vue Router", "Axios", "PrimeVue", "Vite", "Vercel"],
     githubLink: 'https://github.com/sulsanzhar/vue-pizza',
     siteLink: 'https://vue-pizza-app-one.vercel.app/'
   }
@@ -137,7 +137,16 @@ onMounted(async () => {
                             </div>
                         </div>
                         <p class="mb-2 flex-grow">{{ project.description }}</p>
-                        <p class="mb-0 text-sm italic">{{ project.tech }}</p>
+                        <p class="mb-0 text-sm italic flex flex-wrap gap-2">
+                            Технологии:
+                            <span
+                                v-for="(tech, i) in project.tech"
+                                :key="i"
+                                class="border border-gray-400 px-2 py-0.5 rounded-md text-xs bg-white/10"
+                            >
+                                {{ tech }}
+                            </span>
+                        </p>
                     </div>
                 </transition-group>
             </div>
