@@ -9,7 +9,6 @@ let isDeleting = false
 const isVisible = ref(false)
 
 onMounted(() => {
-  // Включаем анимацию после монтирования (через микротик или setTimeout)
   setTimeout(() => {
     isVisible.value = true
   }, 100)
@@ -72,7 +71,7 @@ onMounted(() => {
                         улучшение навыков.
                     </p>
                     <a
-                        href="https://drive.google.com/file/d/1xOegwEN_Y8IZ0-nZYCFRRXfaycz75QFe/view?usp=sharing"
+                        href="https://drive.google.com/file/d/1CqDrO4P2zowynfoDt6uZgPq84y2zAi_-/view?usp=sharing"
                         target="_blank"
                         class="inline-block text-xl font-medium text-white bg-[#5a5abc] border border-[#5a5abc] rounded-lg px-6 py-4 transition-all duration-300 ease-in-out hover:bg-[#37376c] hover:border-[#37376c] hover:text-[#e2e2e2] shadow-md hover:shadow-lg"
                     >

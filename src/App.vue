@@ -26,9 +26,7 @@ const Skills = defineAsyncComponent(() => import('./components/Skills.vue'));
         background-blend-mode: overlay;
       "
         />
-        <div
-            class="backdrop-blur-2xl bg-white/5 border border-white/10 p-6 md:p-10 shadow-xl"
-        >
+        <div class="backdrop-blur-xl bg-white/5 p-6 md:p-10">
             <div class="container mx-auto">
                 <Header />
                 <Promo />
