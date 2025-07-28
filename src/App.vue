@@ -3,7 +3,8 @@ import { defineAsyncComponent } from 'vue'
 
 const Header = defineAsyncComponent(() => import('./components/Header.vue'))
 const Promo = defineAsyncComponent(() => import('./components/Promo.vue'))
-const Experience = defineAsyncComponent(() => import('./components/Experience.vue'))
+const Experience = defineAsyncComponent(() => import('./components/Experience.vue'));
+const Projects = defineAsyncComponent(() => import('./components/Projects.vue'))
 const Education = defineAsyncComponent(() => import('./components/Education.vue'))
 const Contact = defineAsyncComponent(() => import('./components/Contact.vue'))
 const Skills = defineAsyncComponent(() => import('./components/Skills.vue'));
@@ -31,6 +32,7 @@ const Skills = defineAsyncComponent(() => import('./components/Skills.vue'));
                 <Header />
                 <Promo />
                 <Experience />
+                <Projects />
                 <Skills />
                 <Education />
                 <Contact />
