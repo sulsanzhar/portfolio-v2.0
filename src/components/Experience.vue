@@ -14,36 +14,6 @@ const experiences = [
       "React", "React Router DOM", "Redux", "TypeScript", "Sass", "Material UI",
       "Node.js", "Express.js", "PostgreSQL", "Vite", "GitLab", "Git", "OpenAI API (ChatGPT)"
     ]
-  },
-    {
-    position: "FullStack Developer at Adalzan",
-    bulletPoints: [
-      "Интеграция ChatGPT в качестве инструмента искусственного интеллекта для автоматизации юридических консультаций",
-      "Реализация функционала с использованием Socket.io для чатов в реальном времени",
-      "Улучшение навыков работы с ReactJS, Node.js, JWT и другими технологиями",
-      "Участие в проектировании UI/UX и тестировании (unit-тесты, приемочные тесты)",
-    ],
-    location: "Almaty, Kazakhstan",
-    duration: "сент 2023 - нояб 2024",
-    technologies: [
-      "React", "React Router DOM", "Redux", "TypeScript", "Sass", "Material UI",
-      "Node.js", "Express.js", "PostgreSQL", "Vite", "GitLab", "Git", "OpenAI API (ChatGPT)"
-    ]
-  },
-    {
-    position: "FullStack Developer at Adalzan",
-    bulletPoints: [
-      "Интеграция ChatGPT в качестве инструмента искусственного интеллекта для автоматизации юридических консультаций",
-      "Реализация функционала с использованием Socket.io для чатов в реальном времени",
-      "Улучшение навыков работы с ReactJS, Node.js, JWT и другими технологиями",
-      "Участие в проектировании UI/UX и тестировании (unit-тесты, приемочные тесты)",
-    ],
-    location: "Almaty, Kazakhstan",
-    duration: "сент 2023 - нояб 2024",
-    technologies: [
-      "React", "React Router DOM", "Redux", "TypeScript", "Sass", "Material UI",
-      "Node.js", "Express.js", "PostgreSQL", "Vite", "GitLab", "Git", "OpenAI API (ChatGPT)"
-    ]
   }
 ]
 </script>
