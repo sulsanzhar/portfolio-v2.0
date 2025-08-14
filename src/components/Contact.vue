@@ -21,11 +21,12 @@
                 :class="{'animate-slide-left': isVisible}"
                 class="z-10 text-center mx-auto md:text-left md:mx-0"
             >
-                <h5 class="text-xl font-bold text-white my-2">Let's Connect</h5>
+                <h5 class="text-xl font-bold text-white my-2">
+                    Давайте свяжемся!
+                </h5>
                 <p class="text-[#ADB7BE] mb-4 max-w-md">
-                    I'm currently looking for new opportunities, my inbox is
-                    always open. Whether you have a question or just want to say
-                    hi, I'll try my best to get back to you!
+                    Открыт для сотрудничества и новых проектов. Отвечу на ваши
+                    вопросы и сообщения в кратчайшие сроки.
                 </p>
                 <div
                     class="flex items-center flex-row gap-2 justify-center md:justify-normal"
@@ -37,12 +38,12 @@
                     >
                         <v-icon
                             name="fa-github-square"
-                            class="text-black h-[45px] w-[45px] duration-300 ease-in-out hover:text-[white]"
+                            class="h-[50px] w-[50px] duration-300 ease-in-out "
                             animation="float"
                             hover
                         />
                     </a>
-                    <a
+                    <!-- <a
                         href="https://linkedin.com/"
                         target="_blank"
                         rel="noopener"
@@ -53,7 +54,7 @@
                             animation="float"
                             hover
                         />
-                    </a>
+                    </a> -->
                     <a
                         href="https://wa.me/87776813503"
                         target="_blank"
@@ -61,7 +62,7 @@
                     >
                         <v-icon
                             name="io-logo-whatsapp"
-                            class="text-green-500 h-[45px] w-[45px] duration-300 ease-in-out hover:text-white cursor-pointer"
+                            class="text-green-500 h-[45px] w-[45px] duration-300 ease-in-out cursor-pointer"
                             animation="float"
                             hover
                         />
@@ -73,7 +74,7 @@
                     >
                         <v-icon
                             name="co-telegram"
-                            class="text-blue-400 h-[45px] w-[45px] duration-300 ease-in-out hover:text-[white]"
+                            class="text-blue-400 h-[45px] w-[45px] duration-300 ease-in-out"
                             animation="float"
                             hover
                         />

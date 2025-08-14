@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, onMounted, onBeforeUnmount, watch } from 'vue'
 
 const isOpen = ref(false)
 
@@ -18,7 +18,6 @@ function scrollToSection(id: string) {
   }
 }
 
-// Чтобы при изменении размера экрана закрывать меню и убирать блюр
 function handleResize() {
   if (window.innerWidth >= 768) {
     isOpen.value = false
@@ -32,21 +31,30 @@ onMounted(() => {
 onBeforeUnmount(() => {
   window.removeEventListener('resize', handleResize)
 })
+
+watch(isOpen, (val) => {
+  document.body.style.overflow = val ? 'hidden' : ''
+})
 </script>
 
 <template>
     <header class="flex justify-between items-center p-4 relative z-50">
         <div>
-            <h1 class="text-xl md:text-3xl font-bold">
+            <h1 class="text-[clamp(20px,4vw,30px)] font-bold">
                 Sanzhar <span class="text-[#5865ec]">Sultanov</span>
             </h1>
         </div>
 
-        <!-- Десктоп меню -->
-        <ul class="hidden md:flex gap-10 items-center text-2xl">
+        <ul class="hidden lg:flex gap-10 items-center text-2xl">
+            <li
+                class="cursor-pointer hover:text-[#5865ec] duration-300 ease-in-out whitespace-nowrap"
+                @click="scrollToSection('experience')"
+            >
+                Опыт работы
+            </li>
             <li
                 class="cursor-pointer hover:text-[#5865ec] duration-300 ease-in-out"
-                @click="scrollToSection('experience')"
+                @click="scrollToSection('projects')"
             >
                 Проекты
             </li>
@@ -70,10 +78,9 @@ onBeforeUnmount(() => {
             </li>
         </ul>
 
-        <!-- Кнопка бургера -->
         <button
             @click="toggleMenu"
-            class="md:hidden flex flex-col justify-between w-8 h-6 relative z-60"
+            class="lg:hidden flex flex-col justify-between w-8 h-6 relative z-60"
             aria-label="Toggle menu"
         >
             <span
@@ -96,19 +103,24 @@ onBeforeUnmount(() => {
             ></span>
         </button>
 
-        <!-- Фуллскрин меню с блюром и текстом по центру по горизонтали, но меню начинается сверху -->
         <transition name="fade">
             <nav
                 v-if="isOpen"
-                class="fixed inset-0 z-50 flex justify-center items-start pt-40"
-                style="background-color: rgba(0, 0, 0, 0.6); backdrop-filter: blur(100%); -webkit-backdrop-filter: blur(100%); min-height: 100vh;"
+                class="fixed top-0 left-0 w-screen h-screen z-50 flex items-center justify-center"
+                style="background-color: rgba(0, 0, 0, 0.6); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);"
             >
                 <div
-                    class="flex flex-col items-center space-y-10 text-4xl text-white mt-0"
+                    class="flex flex-col items-center space-y-10 text-4xl text-white"
                 >
                     <a
                         href="#"
                         @click.prevent="scrollToSection('experience')"
+                        class="hover:text-[#5865ec] transition text-center w-full max-w-md"
+                        >Опыт работы</a
+                    >
+                    <a
+                        href="#"
+                        @click.prevent="scrollToSection('projects')"
                         class="hover:text-[#5865ec] transition text-center w-full max-w-md"
                         >Проекты</a
                     >

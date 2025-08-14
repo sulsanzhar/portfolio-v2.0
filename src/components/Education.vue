@@ -48,17 +48,17 @@ import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue'
 const educations = [
   {
     name: 'Международный университет информационных технологий',
-    specialization: `Бакалавр по специальности "Программная инженерия"`,
+    specialization: `Бакалавр по специальности "Информационные системы"`,
     duration: '2024 – 2027',
   },
   {
     name: 'Инновационный технический колледж',
-    specialization: `Диплом по специальности "Компьютерная инженерия и программное обеспечение"`,
+    specialization: `Диплом по специальности "Вычислительная техника и программное обеспечение"`,
     duration: '2020 – 2024',
   },
   {
     name: 'Attractor School Almaty',
-    specialization: `FullStack Developer (ReactJS + NodeJS)`,
+    specialization: `Профессиональное обучение по направлению "Fullstack Web Developer"`,
     duration: '2023 - 2024',
   },
 ]

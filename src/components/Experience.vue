@@ -8,7 +8,7 @@ const experiences = [
       "Улучшение навыков работы с ReactJS, Node.js, JWT и другими технологиями",
       "Участие в проектировании UI/UX и тестировании (unit-тесты, приемочные тесты)",
     ],
-    location: "Almaty, Kazakhstan",
+    location: "Алматы, Казахстан",
     duration: "сент 2023 - нояб 2024",
     technologies: [
       "React", "React Router DOM", "Redux", "TypeScript", "Sass", "Material UI",
@@ -19,7 +19,7 @@ const experiences = [
 </script>
 
 <template>
-    <div class="pt-35 mx-auto">
+    <div id="experience" class="pt-35 mx-auto">
         <h2
             class="text-center text-3xl sm:text-4xl md:text-6xl font-medium tracking-tight mb-12 sm:mb-20"
         >

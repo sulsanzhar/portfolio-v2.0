@@ -63,17 +63,16 @@ onMounted(() => {
                     <p
                         class="my-2 text-center md:text-left max-w-xl py-6 text-xl tracking-tighter"
                     >
-                        Frontend-разработчик с крепкой теоретической базой и
-                        практическим опытом создания современных веб-приложений
-                        на Vue.js. Успешно защитил дипломный проект «Vue Pizza»
-                        с оценкой 90 баллов. Заинтересован в развитии и готов
-                        приносить пользу компании через постоянное обучение и
-                        улучшение навыков.
+                        Frontend-разработчик с прочной теоретической подготовкой
+                        и опытом разработки SPA на Vue.js. Дипломный проект
+                        защитил на оценку 90/100. Ориентирован на развитие,
+                        повышение квалификации и достижение результатов в
+                        команде.
                     </p>
                     <a
-                        href="https://drive.google.com/file/d/1CqDrO4P2zowynfoDt6uZgPq84y2zAi_-/view?usp=sharing"
+                        href="https://drive.google.com/file/d/1FVNC7SHuwa1DNNg2Eht-kQgF5ypRW9T-/view?usp=sharing"
                         target="_blank"
-                        class="inline-block text-xl font-medium text-white bg-[#5a5abc] border border-[#5a5abc] rounded-lg px-6 py-4 transition-all duration-300 ease-in-out hover:bg-[#37376c] hover:border-[#37376c] hover:text-[#e2e2e2] shadow-md hover:shadow-lg"
+                        class="text-xl font-medium text-white bg-[#5a5abc] border border-[#5a5abc] rounded-[15px] px-6 py-4 transition-all duration-300 ease-in-out hover:bg-[#37376c] hover:border-[#37376c] hover:text-[#e2e2e2] shadow-md hover:shadow-lg"
                     >
                         Резюме
                     </a>
